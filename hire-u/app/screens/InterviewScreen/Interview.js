@@ -1,13 +1,10 @@
 import * as React from "react";
 import { View, Text, useWindowDimensions, StyleSheet } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import Recommendation from "./RecommendationScreen/RecommendtionScreen";
 
 // Component cho các tab
-const RecommendationRoute = () => (
-  <View style={styles.scene}>
-    <Text>Gợi ý cho bạn</Text>
-  </View>
-);
+const RecommendationRoute = () => <Recommendation />;
 const QuestionBankRoute = () => (
   <View style={styles.scene}>
     <Text>Ngân hàng câu hỏi</Text>
@@ -97,7 +94,6 @@ const styles = StyleSheet.create({
     alignItems: "center", // Căn giữa chữ theo chiều ngang
     justifyContent: "center",
     textAlign: "center",
-    backgroundColor: "#666666", // Căn giữa chữ theo chiều dọc
   },
   label: {
     fontSize: 14,
