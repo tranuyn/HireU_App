@@ -31,119 +31,6 @@ const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
-// function HomeStack() {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen
-//         name="HomeScreen"
-//         component={Home}
-//         options={{ headerShown: false }}
-//       />
-//     </Stack.Navigator>
-//   );
-// }
-
-// const InterviewStack = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="InterviewScreen" component={Interview} />
-//     </Stack.Navigator>
-//   );
-// };
-
-// const JobStack = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="JobScreen" component={Job} />
-//     </Stack.Navigator>
-//   );
-// };
-
-// function WebinarStack() {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="WebinarScreen" component={Webinar} />
-//     </Stack.Navigator>
-//   );
-// }
-
-// function SocialNetworkStack() {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen
-//         name="SocialNetworkScreen"
-//         component={SocialNetwork}
-//       />
-//     </Stack.Navigator>
-//   );
-// }
-
-// const _renderIcon = (routeName, selectedTab) => {
-//   let icon = "";
-
-//   switch (routeName) {
-//     case "HomeScreen": // Home
-//       return (
-//         <AntDesign
-//           name="home"
-//           size={25}
-//           color={routeName === selectedTab ? "white" : "#E7E7E7"}
-//         />
-//       );
-//     case "InterviewScreen": // Store
-//       return (
-//         <Ionicons
-//           name="storefront"
-//           size={25}
-//           color={routeName === selectedTab ? "white" : "#E7E7E7"}
-//         />
-//       );
-//     case "JobScreen": // Post
-//       return (
-//         <MaterialIcons
-//           name="post-add"
-//           size={25}
-//           color={routeName === selectedTab ? "white" : "#E7E7E7"}
-//         />
-//       );
-//     case "title4": // Chat
-//       return (
-//         <Ionicons
-//           name="chatbubble-ellipses"
-//           size={25}
-//           color={routeName === selectedTab ? "white" : "#E7E7E7"}
-//         />
-//       );
-//     case "title5": // Profile
-//       return (
-//         <Ionicons
-//           name="person"
-//           size={25}
-//           color={routeName === selectedTab ? "white" : "#E7E7E7"}
-//         />
-//       );
-//     default:
-//       return null; // Trả về null nếu không khớp với bất kỳ route nào
-//   }
-// };
-
-// const getTabLabel = (routeName) => {
-//   switch (routeName) {
-//     case "HomeScreen":
-//       return "Trang chủ";
-//     case "InterviewScreen":
-//       return "Phỏng vấn";
-//     case "JobScreen":
-//       return "Việc làm";
-//     case "title4":
-//       return "Webinar";
-//     case "title5":
-//       return "Mạng xã hội";
-//     default:
-//       return "";
-//   }
-// };
-
 function BottomTabs() {
   return (
     <Tab.Navigator
@@ -211,7 +98,7 @@ function BottomTabs() {
 
 export default function MainContainer() {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="BottomBar" component={BottomTabs} />
@@ -223,50 +110,7 @@ export default function MainContainer() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    fontFamily: 'regular'
   },
-  shawdow: {
-    shadowColor: "#DDDDDD",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 5,
-  },
-  button: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  btnCircleUp: {
-    width: 70,
-    height: 70,
-    borderRadius: 40,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-    bottom: 40,
-    shadowColor: "#4B93CD",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 1,
-  },
-  imgCircle: {
-    width: 30,
-    height: 30,
-    tintColor: "gray",
-  },
-  tabbarItem: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  img: {
-    width: 30,
-    height: 30,
-  },
+
 });

@@ -1,11 +1,12 @@
 import * as React from "react";
 import { View, Text, useWindowDimensions, StyleSheet } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import CalendarScreen from "./CalendarScreen/CalendarScreen";
 
 // Component cho các tab
 const RecommendationRoute = () => (
   <View style={styles.scene}>
-    <Text>Gợi ý cho bạn</Text>
+    <Text style={{fontFamily: 'regular'}}>Gợi ý cho bạn</Text>
   </View>
 );
 const QuestionBankRoute = () => (
@@ -14,9 +15,7 @@ const QuestionBankRoute = () => (
   </View>
 );
 const AlbumsRoute = () => (
-  <View style={styles.scene}>
-    <Text>Lịch phỏng vấn</Text>
-  </View>
+  <CalendarScreen/>
 );
 
 const renderScene = SceneMap({
