@@ -17,6 +17,7 @@ import styles from "./style";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import SelectDropdown from "react-native-select-dropdown";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import InterviewCard from "../../../components/interviewCard";
 
 // Component cho các tab
 
@@ -102,7 +103,7 @@ const Recommendation = () => {
     {
       id: 1,
       title: "[Interview] Intern Full Stack Developer",
-      interviewer: "Justin Bieber",
+      interviewerId: 1,
       company: "(Công ty TNHH LG CNS)",
       position: "Developer",
       level: "Intern",
@@ -120,17 +121,137 @@ const Recommendation = () => {
     },
     {
       id: 2,
+      title: "[Interview] Intern Backend Developer",
+      interviewerId: 2,
+      company: "(Công ty TNHH ABC)",
+      position: "Backend Developer",
+      level: "Intern",
+      major: ["Công nghệ thông tin", "Khoa học máy tính"],
+      language: ["Node.js", "Python"],
+      date: "10/04/2022",
+      time: "10",
+      initial: 8,
+      registered: 5,
+      conlai: 3,
     },
     {
       id: 3,
+      title: "[Interview] Frontend Developer",
+      interviewerId: 3,
+      company: "(Công ty XYZ)",
+      position: "Frontend Developer",
+      level: "Junior",
+      major: ["Thiết kế đồ họa", "Công nghệ thông tin"],
+      language: ["HTML", "CSS", "JavaScript"],
+      date: "11/04/2022",
+      time: "14",
+      initial: 12,
+      registered: 8,
+      conlai: 4,
+    },
+    {
+      id: 4,
+      title: "[Interview] Data Scientist Intern",
+      interviewerId: 4,
+      company: "(Công ty Data Inc.)",
+      position: "Data Scientist",
+      level: "Intern",
+      major: ["Khoa học dữ liệu", "Toán ứng dụng"],
+      language: ["Python", "R"],
+      date: "12/04/2022",
+      time: "11",
+      initial: 5,
+      registered: 3,
+      conlai: 2,
+    },
+    {
+      id: 5,
+      title: "[Interview] Mobile App Developer",
+      interviewerId: 5,
+      company: "(Công ty AppDev)",
+      position: "Mobile Developer",
+      level: "Junior",
+      major: ["Công nghệ thông tin", "Khoa học máy tính"],
+      language: ["Flutter", "Dart"],
+      date: "13/04/2022",
+      time: "16",
+      initial: 7,
+      registered: 4,
+      conlai: 3,
+    },
+    {
+      id: 6,
+      title: "[Interview] UX/UI Designer",
+      interviewerId: 6,
+      company: "(Công ty Design Co.)",
+      position: "Designer",
+      level: "Junior",
+      major: ["Thiết kế đồ họa", "Nghệ thuật"],
+      language: ["Figma", "Sketch"],
+      date: "14/04/2022",
+      time: "13",
+      initial: 6,
+      registered: 3,
+      conlai: 3,
+    },
+    {
+      id: 7,
+      title: "[Interview] Cloud Engineer Intern",
+      interviewerId: 1,
+      company: "(Công ty Cloud Solutions)",
+      position: "Cloud Engineer",
+      level: "Intern",
+      major: ["Công nghệ thông tin", "Khoa học máy tính"],
+      language: ["AWS", "Azure"],
+      date: "15/04/2022",
+      time: "09",
+      initial: 4,
+      registered: 2,
+      conlai: 2,
+    },
+    {
+      id: 8,
+      title: "[Interview] Cybersecurity Analyst Intern",
+      interviewerId: 2,
+      company: "(Công ty CyberSec)",
+      position: "Cybersecurity Analyst",
+      level: "Intern",
+      major: ["An ninh mạng", "Công nghệ thông tin"],
+      language: ["Python", "C++"],
+      date: "16/04/2022",
+      time: "14",
+      initial: 5,
+      registered: 3,
+      conlai: 2,
+    },
+    {
+      id: 9,
+      title: "[Interview] Game Developer Intern",
+      interviewerId: 3,
+      company: "(Công ty GameDev)",
+      position: "Game Developer",
+      level: "Intern",
+      major: ["Công nghệ game", "Khoa học máy tính"],
+      language: ["C#", "Unity"],
+      date: "17/04/2022",
+      time: "11",
+      initial: 6,
+      registered: 4,
+      conlai: 2,
     },
   ];
 
   const professional = [
     {
       id: 1,
-      name: "Justin Bieber",
+      name: "Mark Zuckerberg",
       dateOfBirth: 1989,
+      imageUrl: [
+        require("../../../../assets/images/a.jpg"),
+        require("../../../../assets/images/b.png"),
+        require("../../../../assets/images/c.jpg"),
+        require("../../../../assets/images/d.jpg"),
+      ],
       education: "Đại học Bách Khoa Hà Nội",
       currentWork: [
         "Project Manager tại Công ty ABC Technology",
@@ -167,6 +288,12 @@ const Recommendation = () => {
       id: 2,
       name: "Alice Johnson",
       dateOfBirth: 1990,
+      imageUrl: [
+        require("../../../../assets/images/e.jpg"),
+        require("../../../../assets/images/f.jpg"),
+        require("../../../../assets/images/j.jpg"),
+        require("../../../../assets/images/h.jpg"),
+      ],
       education: "Đại học Stanford",
       currentWork: [
         "Software Engineer tại Tech Innovations",
@@ -203,6 +330,12 @@ const Recommendation = () => {
       name: "Bob Smith",
       dateOfBirth: 1985,
       education: "Học viện Công nghệ Massachusetts",
+      imageUrl: [
+        require("../../../../assets/images/i.jpg"),
+        require("../../../../assets/images/jj.jpg"),
+        require("../../../../assets/images/k.jpg"),
+        require("../../../../assets/images/l.jpg"),
+      ],
       currentWork: [
         "DevOps Engineer tại Cloud Solutions",
         "Quản lý hạ tầng và triển khai ứng dụng",
@@ -238,6 +371,12 @@ const Recommendation = () => {
       name: "Eve Davis",
       dateOfBirth: 1992,
       education: "Đại học California, Berkeley",
+      imageUrl: [
+        require("../../../../assets/images/a.jpg"),
+        require("../../../../assets/images/b.png"),
+        require("../../../../assets/images/c.jpg"),
+        require("../../../../assets/images/d.jpg"),
+      ],
       currentWork: [
         "Data Scientist tại Data Insights",
         "Phân tích dữ liệu và phát triển mô hình học máy",
@@ -273,6 +412,12 @@ const Recommendation = () => {
       name: "Charlie Brown",
       dateOfBirth: 1988,
       education: "Đại học Washington",
+      imageUrl: [
+        require("../../../../assets/images/e.jpg"),
+        require("../../../../assets/images/f.jpg"),
+        require("../../../../assets/images/j.jpg"),
+        require("../../../../assets/images/h.jpg"),
+      ],
       currentWork: [
         "Cybersecurity Analyst tại SecureTech",
         "Bảo vệ hệ thống và dữ liệu khỏi các mối đe dọa",
@@ -308,6 +453,12 @@ const Recommendation = () => {
       name: "Daniel Lee",
       dateOfBirth: 1993,
       education: "Đại học Michigan",
+      imageUrl: [
+        require("../../../../assets/images/i.jpg"),
+        require("../../../../assets/images/jj.jpg"),
+        require("../../../../assets/images/k.jpg"),
+        require("../../../../assets/images/l.jpg"),
+      ],
       currentWork: [
         "UX/UI Designer tại Creative Tech",
         "Thiết kế giao diện người dùng và trải nghiệm",
@@ -338,79 +489,9 @@ const Recommendation = () => {
         "Thử nghiệm người dùng",
       ],
     },
-    {
-      id: 7,
-      name: "Fiona Green",
-      dateOfBirth: 1987,
-      education: "Đại học Toronto",
-      currentWork: [
-        "Software Architect tại Innovative Solutions",
-        "Thiết kế kiến trúc phần mềm cho các sản phẩm",
-        "Lãnh đạo nhóm phát triển phần mềm",
-      ],
-      experience: [
-        {
-          description: "10+ năm kinh nghiệm trong phát triển phần mềm",
-          start: "2013",
-          end: "now",
-        },
-        {
-          description: "Senior Developer tại Global Tech",
-          start: "2010",
-          end: "2013",
-        },
-        {
-          description: "Junior Developer tại Startup",
-          start: "2008",
-          end: "2010",
-        },
-      ],
-      skill: [
-        "Kiến trúc phần mềm",
-        "Phát triển ứng dụng phân tán",
-        "Lãnh đạo kỹ thuật",
-        "Quản lý dự án",
-        "Phát triển Agile",
-      ],
-    },
-    {
-      id: 8,
-      name: "George Martin",
-      dateOfBirth: 1984,
-      education: "Đại học Columbia",
-      currentWork: [
-        "Blockchain Developer tại Blockchain Innovations",
-        "Phát triển ứng dụng dựa trên blockchain",
-        "Tham gia các dự án hợp tác quốc tế",
-      ],
-      experience: [
-        {
-          description: "5+ năm kinh nghiệm trong phát triển blockchain",
-          start: "2018",
-          end: "now",
-        },
-        {
-          description: "Developer tại FinTech Solutions",
-          start: "2016",
-          end: "2018",
-        },
-        {
-          description: "Intern tại Blockchain Startup",
-          start: "2015",
-          end: "2016",
-        },
-      ],
-      skill: [
-        "Ethereum, Solidity",
-        "Phát triển hợp đồng thông minh",
-        "Kỹ thuật phân tán",
-        "Quản lý dự án Agile",
-        "Phát triển ứng dụng di động",
-      ],
-    },
   ];
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.searchContainer}>
         <AntDesign name="search1" size={20} color="#A7A7A7" />
         <TextInput placeholder="Tìm kiếm" style={styles.inputSearch} />
@@ -571,7 +652,20 @@ const Recommendation = () => {
         keyExtractor={(item) => item.id}
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+      <View style={{ marginTop: 10 }}></View>
+      {interviewCards.map((item) => {
+        const interviewer = professional.find(
+          (prof) => prof.id === item.interviewerId
+        ); // Tìm professional dựa trên interviewerId
+        return (
+          <InterviewCard
+            key={item.id} // Đừng quên thêm key cho mỗi phần tử trong danh sách
+            interview={item}
+            professional={interviewer} // Truyền thông tin interviewer tương ứng
+          />
+        );
+      })}
+    </ScrollView>
   );
 };
 

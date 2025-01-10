@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 8,
+    marginBottom: 10,
   },
   dropdownItemTxtStyle: {
     flex: 1,
