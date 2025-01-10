@@ -24,6 +24,7 @@ import Webinar from "../screens/WebinarScreen/Webinar";
 import WebinarIcon from "../../assets/icons/WebinarIcon";
 import RegistrationRules from "../screens/InterviewScreen/RegistrationRules";
 
+import InterviewDetailScreen from "../screens/InterviewScreen/InterviewDetailScreen/InterviewDetailScreen";
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -100,6 +101,10 @@ export default function MainContainer() {
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="BottomBar" component={BottomTabs} />
+        <Stack.Screen
+          name="InterviewDetailScreen"
+          component={InterviewDetailScreen}
+        />
       </Stack.Navigator>
     </View>
   );
@@ -108,6 +113,6 @@ export default function MainContainer() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontFamily: 'regular'
+    fontFamily: "regular",
   },
 });

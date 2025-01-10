@@ -1,22 +1,19 @@
 import * as React from "react";
 import { View, Text, useWindowDimensions, StyleSheet } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+
+import Recommendation from "./RecommendationScreen/RecommendtionScreen";
 import CalendarScreen from "./CalendarScreen/CalendarScreen";
 
 // Component cho các tab
-const RecommendationRoute = () => (
-  <View style={styles.scene}>
-    <Text style={{fontFamily: 'regular'}}>Gợi ý cho bạn</Text>
-  </View>
-);
+const RecommendationRoute = () => <Recommendation />;
+
 const QuestionBankRoute = () => (
   <View style={styles.scene}>
     <Text>Ngân hàng câu hỏi</Text>
   </View>
 );
-const AlbumsRoute = () => (
-  <CalendarScreen/>
-);
+const AlbumsRoute = () => <CalendarScreen />;
 
 const renderScene = SceneMap({
   recommendation: RecommendationRoute,
@@ -96,7 +93,6 @@ const styles = StyleSheet.create({
     alignItems: "center", // Căn giữa chữ theo chiều ngang
     justifyContent: "center",
     textAlign: "center",
-    backgroundColor: "#666666", // Căn giữa chữ theo chiều dọc
   },
   label: {
     fontSize: 14,
