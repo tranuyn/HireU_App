@@ -16,9 +16,11 @@ import styles from "./style";
 import Detail from "./DetailScreen";
 import Professional from "./ProfessionalTab";
 import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from "@react-navigation/native";
 
 const InterviewDetailScreen = ({ route }) => {
   const { interview, professional } = route.params;
+  const navigation = useNavigation();
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -39,6 +41,10 @@ const InterviewDetailScreen = ({ route }) => {
   //       }
   //     }
   //   };
+  const handleTermsPress = () => {
+    setModalVisible(false); 
+    navigation.navigate('RegistrationRules');
+  };
   const InterviewRoute = () => {
     return (
       <View style={styles.scene}>
@@ -226,10 +232,14 @@ const InterviewDetailScreen = ({ route }) => {
                 value={toggleCheckBox}
                 onValueChange={(newValue) => setToggleCheckBox(newValue)}
               />
-
-              <Text style={[styles.text, { marginLeft: 15, flex: 1 }]}>
-                Tôi đồng ý với điều khoản và quy định tham gia phỏng vấn của
-                HireU
+              <Text style={[styles.text, { marginLeft: 15 }]}>
+                Tôi đồng ý với{" "}
+                <Text
+                  style={[styles.text, { color: "#4B93CD" }]} onPress={handleTermsPress}
+                >
+                  điều khoản và quy định tham gia phỏng vấn
+                </Text>{" "}
+                của HireU
               </Text>
             </View>
             <View style={[styles.namngang, { justifyContent: "flex-end" }]}>

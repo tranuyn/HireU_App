@@ -90,7 +90,6 @@ function BottomTabs() {
       <Tab.Screen name="JobScreen" component={Job} />
       <Tab.Screen name="WebinarScreen" component={Webinar} />
       <Tab.Screen name="SocialNetworkScreen" component={SocialNetwork} />
-      {/* <Tab.Screen name="RegistrationRules" component={RegistrationRules} /> */}
     </Tab.Navigator>
   );
 }
@@ -101,6 +100,7 @@ export default function MainContainer() {
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="BottomBar" component={BottomTabs} />
+        <Stack.Screen name="RegistrationRules" component={RegistrationRules} />
         <Stack.Screen
           name="InterviewDetailScreen"
           component={InterviewDetailScreen}

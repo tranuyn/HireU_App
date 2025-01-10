@@ -18,6 +18,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import SelectDropdown from "react-native-select-dropdown";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import InterviewCard from "../../../components/interviewCard";
+import { useEffect } from "react";
 
 // Component cho các tab
 
@@ -30,6 +31,12 @@ const Recommendation = () => {
       setSelectedLanguages([...selectedLanguages, itemId]); // Chọn
     }
   };
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedMajor, setSelectedMajor] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState(null);
+  const [selectedLevel, setSelectedLevel] = useState(null);
+  const [filteredInterviews, setFilteredInterviews] = useState(interviewCards);
 
   const majors = [
     { title: "Hủy lọc" },
@@ -67,7 +74,7 @@ const Recommendation = () => {
   const language = [
     { id: "Java", title: "Java", count: "12" },
     { id: "Javascript", title: "Javascript", count: "10" },
-    { id: "NodeJS", title: "NodeJS", count: "31" },
+    { id: "NodeJS", title: "Node.js", count: "31" },
     { id: "PHP", title: "PHP", count: "06" },
     { id: "C#", title: "C#", count: "13" },
     { id: "React", title: "React", count: "19" },
@@ -75,12 +82,11 @@ const Recommendation = () => {
   ];
 
   const renderItem = ({ item }) => {
-    const isSelected = selectedLanguages.includes(item.id);
-
+    const isSelected = selectedLanguages.some((lang) => lang.id === item.id);
     return (
       <TouchableOpacity
         style={[styles.item, isSelected && styles.selectedItem]}
-        onPress={() => toggleSelect(item.id)}
+        onPress={() => handleLanguageSelect(item)}
       >
         <Text style={[styles.title, isSelected && styles.selectedTitle]}>
           {item.title}
@@ -490,63 +496,151 @@ const Recommendation = () => {
       ],
     },
   ];
+
+  const filterInterviews = () => {
+    let filtered = interviewCards.filter((interview) => {
+      //Tìm kiếm
+      const searchMatch =
+        searchTerm === "" ||
+        interview.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        interview.company.toLowerCase().includes(searchTerm.toLowerCase());
+      // ||
+      // interview.skills.some((skill) =>
+      //   skill.toLowerCase().includes(searchTerm.toLowerCase())
+      // );
+
+      // Lọc theo chuyên ngành
+      const majorMatch =
+        !selectedMajor ||
+        selectedMajor.title === "Hủy lọc" ||
+        interview.major.includes(selectedMajor.title);
+
+      // Lọc theo vị trí
+      const positionMatch =
+        !selectedPosition ||
+        selectedPosition.title === "Hủy lọc" ||
+        interview.position === selectedPosition.title;
+
+      // Lọc theo cấp bậc
+      const levelMatch =
+        !selectedLevel ||
+        selectedLevel.title === "Hủy lọc" ||
+        interview.level === selectedLevel.title;
+
+      // Lọc theo ngôn ngữ lập trình
+      const languageMatch =
+        selectedLanguages.length === 0 ||
+        selectedLanguages.every((lang) =>
+          interview.language.includes(lang.title)
+        );
+
+      return (
+        searchMatch &&
+        majorMatch &&
+        positionMatch &&
+        levelMatch &&
+        languageMatch
+      );
+    });
+
+    setFilteredInterviews(filtered);
+  };
+  useEffect(() => {
+    filterInterviews();
+  }, [searchTerm, selectedMajor, selectedPosition, selectedLevel, selectedLanguages]);
+
+  const handleSearch = (value) => {
+    setSearchTerm(value.nativeEvent.text)
+  };
+
+  // Xử lý chọn major
+  const handleMajorSelect = (selectedItem) => {
+    if (selectedItem.title === "Hủy lọc") {
+      setSelectedMajor(null);
+    } else {
+      setSelectedMajor(selectedItem);
+    }
+  };
+
+  // Xử lý chọn position
+  const handlePositionSelect = (selectedItem) => {
+    if (selectedItem.title === "Hủy lọc") {
+      setSelectedPosition(null);
+    } else {
+      setSelectedPosition(selectedItem);
+    }
+  };
+
+  // Xử lý chọn level
+  const handleLevelSelect = (selectedItem) => {
+    if (selectedItem.title === "Hủy lọc") {
+      setSelectedLevel(null);
+    } else {
+      setSelectedLevel(selectedItem);
+    }
+  };
+
+  // Xử lý chọn/bỏ chọn ngôn ngữ
+  const handleLanguageSelect = (item) => {
+    if (selectedLanguages.some((lang) => lang.id === item.id)) {
+      setSelectedLanguages(
+        selectedLanguages.filter((lang) => lang.id !== item.id)
+      );
+    } else {
+      setSelectedLanguages([...selectedLanguages, item]);
+    }
+  };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.searchContainer}>
         <AntDesign name="search1" size={20} color="#A7A7A7" />
-        <TextInput placeholder="Tìm kiếm" style={styles.inputSearch} />
+        <TextInput placeholder="Tìm kiếm" style={styles.inputSearch} onChange={handleSearch}/>
       </View>
 
       <View style={styles.threeSelect}>
         <SelectDropdown
           data={majors}
-          // onSelect={(selectedItem, index) => {
-          //   console.log(selectedItem, index);
-          // }}
-          renderButton={(selectedItem, isOpened) => {
-            return (
-              <View style={styles.dropdownButtonStyle}>
-                <Text
-                  style={styles.dropdownButtonTxtStyle}
-                  numberOfLines={2}
-                  ellipsizeMode="tail"
-                >
-                  {(selectedItem && selectedItem.title) || "Chuyên ngành"}
-                </Text>
-                {isOpened ? (
-                  <MaterialCommunityIcons
-                    name="chevron-up"
-                    size={24}
-                    color="black"
-                  />
-                ) : (
-                  <MaterialCommunityIcons
-                    name="chevron-down"
-                    size={24}
-                    color="black"
-                  />
-                )}
-              </View>
-            );
-          }}
-          renderItem={(item, index, isSelected) => {
-            return (
-              <View
-                style={{
-                  ...styles.dropdownItemStyle,
-                  ...(isSelected && { backgroundColor: "#D2D9DF" }),
-                }}
+          onSelect={handleMajorSelect}
+          renderButton={(selectedItem, isOpened) => (
+            <View style={styles.dropdownButtonStyle}>
+              <Text
+                style={styles.dropdownButtonTxtStyle}
+                numberOfLines={2}
+                ellipsizeMode="tail"
               >
-                <Text
-                  style={styles.dropdownItemTxtStyle}
-                  numberOfLines={2}
-                  ellipsizeMode="tail"
-                >
-                  {item.title}
-                </Text>
-              </View>
-            );
-          }}
+                {(selectedItem && selectedItem.title) || "Chuyên ngành"}
+              </Text>
+              {isOpened ? (
+                <MaterialCommunityIcons
+                  name="chevron-up"
+                  size={24}
+                  color="black"
+                />
+              ) : (
+                <MaterialCommunityIcons
+                  name="chevron-down"
+                  size={24}
+                  color="black"
+                />
+              )}
+            </View>
+          )}
+          renderItem={(item, index, isSelected) => (
+            <View
+              style={{
+                ...styles.dropdownItemStyle,
+                ...(isSelected && { backgroundColor: "#D2D9DF" }),
+              }}
+            >
+              <Text
+                style={styles.dropdownItemTxtStyle}
+                numberOfLines={2}
+                ellipsizeMode="tail"
+              >
+                {item.title}
+              </Text>
+            </View>
+          )}
           showsVerticalScrollIndicator={false}
           dropdownStyle={styles.dropdownMenuStyle}
           buttonStyle={styles.selectButtonStyle}
@@ -554,47 +648,41 @@ const Recommendation = () => {
 
         <SelectDropdown
           data={positions}
-          // onSelect={(selectedItem, index) => {
-          //   console.log(selectedItem, index);
-          // }}
-          renderButton={(selectedItem, isOpened) => {
-            return (
-              <View style={styles.dropdownButtonStyle}>
-                <Text
-                  style={styles.dropdownButtonTxtStyle}
-                  numberOfLines={2}
-                  ellipsizeMode="tail"
-                >
-                  {(selectedItem && selectedItem.title) || "Vị trí"}
-                </Text>
-                {isOpened ? (
-                  <MaterialCommunityIcons
-                    name="chevron-up"
-                    size={24}
-                    color="black"
-                  />
-                ) : (
-                  <MaterialCommunityIcons
-                    name="chevron-down"
-                    size={24}
-                    color="black"
-                  />
-                )}
-              </View>
-            );
-          }}
-          renderItem={(item, index, isSelected) => {
-            return (
-              <View
-                style={{
-                  ...styles.dropdownItemStyle,
-                  ...(isSelected && { backgroundColor: "#D2D9DF" }),
-                }}
+          onSelect={handlePositionSelect}
+          renderButton={(selectedItem, isOpened) => (
+            <View style={styles.dropdownButtonStyle}>
+              <Text
+                style={styles.dropdownButtonTxtStyle}
+                numberOfLines={2}
+                ellipsizeMode="tail"
               >
-                <Text style={styles.dropdownItemTxtStyle}>{item.title}</Text>
-              </View>
-            );
-          }}
+                {(selectedItem && selectedItem.title) || "Vị trí"}
+              </Text>
+              {isOpened ? (
+                <MaterialCommunityIcons
+                  name="chevron-up"
+                  size={24}
+                  color="black"
+                />
+              ) : (
+                <MaterialCommunityIcons
+                  name="chevron-down"
+                  size={24}
+                  color="black"
+                />
+              )}
+            </View>
+          )}
+          renderItem={(item, index, isSelected) => (
+            <View
+              style={{
+                ...styles.dropdownItemStyle,
+                ...(isSelected && { backgroundColor: "#D2D9DF" }),
+              }}
+            >
+              <Text style={styles.dropdownItemTxtStyle}>{item.title}</Text>
+            </View>
+          )}
           showsVerticalScrollIndicator={false}
           dropdownStyle={styles.dropdownMenuStyle}
           buttonStyle={styles.selectButtonStyle}
@@ -602,43 +690,37 @@ const Recommendation = () => {
 
         <SelectDropdown
           data={levels}
-          // onSelect={(selectedItem, index) => {
-          //   console.log(selectedItem, index);
-          // }}
-          renderButton={(selectedItem, isOpened) => {
-            return (
-              <View style={styles.dropdownButtonStyle}>
-                <Text style={styles.dropdownButtonTxtStyle}>
-                  {(selectedItem && selectedItem.title) || "Cấp bậc"}
-                </Text>
-                {isOpened ? (
-                  <MaterialCommunityIcons
-                    name="chevron-up"
-                    size={24}
-                    color="black"
-                  />
-                ) : (
-                  <MaterialCommunityIcons
-                    name="chevron-down"
-                    size={24}
-                    color="black"
-                  />
-                )}
-              </View>
-            );
-          }}
-          renderItem={(item, index, isSelected) => {
-            return (
-              <View
-                style={{
-                  ...styles.dropdownItemStyle,
-                  ...(isSelected && { backgroundColor: "#D2D9DF" }),
-                }}
-              >
-                <Text style={styles.dropdownItemTxtStyle}>{item.title}</Text>
-              </View>
-            );
-          }}
+          onSelect={handleLevelSelect}
+          renderButton={(selectedItem, isOpened) => (
+            <View style={styles.dropdownButtonStyle}>
+              <Text style={styles.dropdownButtonTxtStyle}>
+                {(selectedItem && selectedItem.title) || "Cấp bậc"}
+              </Text>
+              {isOpened ? (
+                <MaterialCommunityIcons
+                  name="chevron-up"
+                  size={24}
+                  color="black"
+                />
+              ) : (
+                <MaterialCommunityIcons
+                  name="chevron-down"
+                  size={24}
+                  color="black"
+                />
+              )}
+            </View>
+          )}
+          renderItem={(item, index, isSelected) => (
+            <View
+              style={{
+                ...styles.dropdownItemStyle,
+                ...(isSelected && { backgroundColor: "#D2D9DF" }),
+              }}
+            >
+              <Text style={styles.dropdownItemTxtStyle}>{item.title}</Text>
+            </View>
+          )}
           showsVerticalScrollIndicator={false}
           dropdownStyle={styles.dropdownMenuStyle}
           buttonStyle={styles.selectButtonStyle}
@@ -650,21 +732,43 @@ const Recommendation = () => {
         horizontal={true}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        // renderItem={({ item }) => (
+        //   <TouchableOpacity
+        //     onPress={() => handleLanguageSelect(item)}
+        //     style={[
+        //       styles.languageItem,
+        //       selectedLanguages.some((lang) => lang.id === item.id) &&
+        //         styles.selectedLanguageItem,
+        //     ]}
+        //   >
+        //     <Text
+        //       style={[
+        //         styles.languageText,
+        //         selectedLanguages.some((lang) => lang.id === item.id) &&
+        //           styles.selectedLanguageText,
+        //       ]}
+        //     >
+        //       {item.title}
+        //     </Text>
+        //   </TouchableOpacity>
+        // )}
+        // keyExtractor={(item) => item.id.toString()}
         showsHorizontalScrollIndicator={false}
       />
-      <View style={{ marginTop: 10 }}></View>
-      {interviewCards.map((item) => {
-        const interviewer = professional.find(
-          (prof) => prof.id === item.interviewerId
-        ); // Tìm professional dựa trên interviewerId
-        return (
-          <InterviewCard
-            key={item.id} // Đừng quên thêm key cho mỗi phần tử trong danh sách
-            interview={item}
-            professional={interviewer} // Truyền thông tin interviewer tương ứng
-          />
-        );
-      })}
+      <View style={{ marginTop: 10 }}>
+        {filteredInterviews?.map((item) => {
+          const interviewer = professional.find(
+            (prof) => prof.id === item.interviewerId
+          );
+          return (
+            <InterviewCard
+              key={item.id}
+              interview={item}
+              professional={interviewer}
+            />
+          );
+        })}
+      </View>
     </ScrollView>
   );
 };

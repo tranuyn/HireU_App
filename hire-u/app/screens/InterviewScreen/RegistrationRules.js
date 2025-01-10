@@ -1,14 +1,20 @@
 import React from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 const RegistrationRules = () => {
+    const navigation = useNavigation()
   return (
     <ScrollView style={styles.container}>
       <View style={styles.rulesContainer}>
-        <Text style={styles.rulesTitle}>
-          Quy định dành cho người dùng tham gia buổi phỏng vấn thử trên app
-          "HireU"
-        </Text>
+        <View style={styles.rulesTitleContainer}>
+          <Ionicons name="chevron-back" size={24} color="black" onPress={()=>navigation.goBack()}/>
+          <Text style={styles.rulesTitle}>
+            Quy định dành cho người dùng tham gia buổi phỏng vấn thử trên app
+            "HireU"
+          </Text>
+        </View>
 
         <View style={styles.rulesContent}>
           <View style={styles.ruleSection}>
@@ -146,9 +152,14 @@ const styles = StyleSheet.create({
     margin: 16,
     borderRadius: 8,
   },
+  rulesTitleContainer: {
+    // flexDirection: "row",
+    alignItems: "center",
+  },
   rulesTitle: {
     color: "#4B93CD",
     fontSize: 20,
+    marginTop: 5,
     fontFamily: "bold",
     marginBottom: 24,
     paddingBottom: 12,
@@ -163,7 +174,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    fontFamily: 'medium',
+    fontFamily: "medium",
     marginBottom: 10,
     color: "black",
   },
@@ -174,8 +185,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     lineHeight: 24,
     color: "black",
-    fontFamily: 'regular',
-    fontSize: 15
+    fontFamily: "regular",
+    fontSize: 15,
   },
   rulesFooter: {
     marginTop: 20,

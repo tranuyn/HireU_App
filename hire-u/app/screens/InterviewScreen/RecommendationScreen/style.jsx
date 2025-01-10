@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     display: "flex",
     flexDirection: "row",
+    alignItems:'center',
     width: "100%",
     borderRadius: 20,
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingVertical: 5,
     marginBottom: 10,
     shadowColor: "#5f5d5d",
     shadowOffset: {
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
   },
   inputSearch: {
     marginLeft: 5,
+    fontFamily: 'regular'
   },
   dropdownButtonStyle: {
     width: "32%",
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
   dropdownButtonTxtStyle: {
     flex: 1,
     fontSize: 13,
-    fontWeight: "400",
+    fontFamily: 'regular',
     color: "#000",
   },
 
@@ -90,12 +92,12 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#fff",
-    height: 50,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     marginRight: 10,
     paddingHorizontal: 15,
+    paddingVertical: 5,
     borderRadius: 20,
   },
   selectedItem: {
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 13,
-    fontWeight: "400",
+    fontFamily: 'regular',
     color: "#4B93CD",
   },
   selectedTitle: {
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   countContainer: {
     backgroundColor: "#4B93CD",
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 3,
     borderRadius: 20,
     marginLeft: 10,
   },
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
   },
   count: {
     color: "#fff",
+    fontFamily: 'regular',
   },
   selectedCount: {
     color: "#4B93CD",

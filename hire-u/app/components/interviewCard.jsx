@@ -108,8 +108,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 15,
-    borderWidth: 1, // Đặt độ dày của đường viền
-    borderColor: "#4B93CD", // Màu sắc của đường viền
+    borderWidth: 1, 
+    borderColor: "#4B93CD", 
+    alignItems: 'center'
   },
   registerText: {
     color: "#4B93CD",
