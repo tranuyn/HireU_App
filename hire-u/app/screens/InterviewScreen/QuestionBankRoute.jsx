@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
     color: "#333333",
-    fontFamily: "ASAP",
+    fontFamily: "medium",
     marginBottom: 16,
   },
   searchContainer: {
@@ -143,10 +143,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 8,
     paddingHorizontal: 12,
+
     paddingVertical: 8,
   },
   searchInput: {
     flex: 1,
+    fontFamily: "medium",
+
     marginLeft: 8,
     fontSize: 14,
     color: "#333333",
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#333333",
-    fontFamily: "regular",
+    fontFamily: "bold",
     marginBottom: 16,
   },
   categoryGrid: {
@@ -201,13 +204,17 @@ const styles = StyleSheet.create({
     color: "#333333",
     marginBottom: 4,
     textAlign: "center",
+    fontFamily: "medium",
   },
   activeCategoryTitle: {
     color: "#ffffff",
+    fontFamily: "bold",
   },
   questionCount: {
     fontSize: 12,
     color: "#AAA6B9",
+    fontFamily: "medium",
+
     textAlign: "center",
   },
   activeQuestionCount: {

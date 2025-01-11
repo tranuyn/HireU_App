@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "bold",
     marginLeft: 16,
+    fontFamily: "bold",
   },
   jobList: {
     padding: 16,
@@ -185,6 +186,8 @@ const styles = StyleSheet.create({
   companyName: {
     fontSize: 14,
     color: "#232D3A",
+    fontFamily: "medium",
+
     marginTop: 4,
     fontFamily: "regular",
   },
@@ -213,6 +216,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 12,
+    fontFamily: "medium",
   },
   timePosted: {
     color: "#AAA6B9",

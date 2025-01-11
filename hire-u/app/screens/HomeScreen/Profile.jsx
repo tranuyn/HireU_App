@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
     top: 30,
     bottom: 20,
     left: 0,
+
     right: 0,
   },
   profileImage: {
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 1,
+
     marginLeft: 16,
   },
   name: {
@@ -161,6 +163,8 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 14,
+    fontFamily: "medium",
+
     color: "#fff",
     marginTop: 4,
     fontFamily: 'regular'
@@ -179,9 +183,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "bold",
     color: "#fff",
+    fontFamily: "medium",
   },
   statLabel: {
     fontSize: 12,
+    fontFamily: "medium",
+
     color: "#fff",
     fontFamily: 'regular'
   },
@@ -196,6 +203,8 @@ const styles = StyleSheet.create({
   },
   editButtonText: {
     color: "#fff",
+    fontFamily: "medium",
+
     marginRight: 4,
     fontFamily: 'regular'
   },
@@ -211,12 +220,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     backgroundColor: "#D3EEFF",
+    fontFamily: "medium",
+
     borderRadius: 12,
     marginBottom: 8,
   },
   sectionText: {
     flex: 1,
     marginLeft: 12,
+    fontFamily: "medium",
+
     fontSize: 16,
     color: "#4A90E2",
     fontFamily: 'regular'

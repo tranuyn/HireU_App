@@ -17,20 +17,12 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 const AddExperience = () => {
   const navigation = useNavigation();
   const [currentlyWorking, setCurrentlyWorking] = useState(false);
-
-  // States for date values
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  // States for showing/hiding date pickers
   const [showStartPicker, setShowStartPicker] = useState(false);
   const [showEndPicker, setShowEndPicker] = useState(false);
-
-  // States for displaying formatted dates in inputs
   const [startDateText, setStartDateText] = useState("");
   const [endDateText, setEndDateText] = useState("");
-
-  // Handle date changes
   const onStartDateChange = (event, selectedDate) => {
     setShowStartPicker(false);
     if (selectedDate) {
@@ -58,7 +50,7 @@ const AddExperience = () => {
   };
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -68,20 +60,19 @@ const AddExperience = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.headerTitle}>Thêm kinh nghiệm</Text>
- 
-      <ScrollView style={styles.formContainer}> 
+
+      <ScrollView style={styles.formContainer}>
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Nghề nghiệp</Text>
           <TextInput style={styles.input} placeholder="Nhập nghề nghiệp" />
         </View>
- 
+
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Công ty</Text>
           <TextInput style={styles.input} placeholder="Nhập tên công ty" />
         </View>
- 
+
         <View style={styles.dateContainer}>
-          {/* Start Date */}
           <View style={[styles.inputGroup, { flex: 1, marginRight: 10 }]}>
             <Text style={styles.label}>Ngày vào làm</Text>
             <TouchableOpacity onPress={() => setShowStartPicker(true)}>
@@ -92,7 +83,7 @@ const AddExperience = () => {
                 editable={false}
               />
             </TouchableOpacity>
-          </View> 
+          </View>
           <View style={[styles.inputGroup, { flex: 1 }]}>
             <Text style={styles.label}>Ngày nghỉ việc</Text>
             <TouchableOpacity
@@ -107,7 +98,7 @@ const AddExperience = () => {
             </TouchableOpacity>
           </View>
         </View>
- 
+
         {showStartPicker && (
           <DateTimePicker
             value={startDate}
@@ -127,7 +118,6 @@ const AddExperience = () => {
           />
         )}
 
-        {/* Currently Working Checkbox */}
         <View style={styles.checkboxContainer}>
           <CheckBox
             checked={currentlyWorking}
@@ -142,7 +132,6 @@ const AddExperience = () => {
           />
         </View>
 
-        {/* Description Field */}
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Mô tả quá trình làm việc</Text>
           <TextInput
@@ -153,11 +142,11 @@ const AddExperience = () => {
             textAlignVertical="top"
           />
         </View>
-
-        {/* Save Button */}
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>Lưu</Text>
-        </TouchableOpacity>
+        <View style={styles.saveButtonContainer}>
+          <TouchableOpacity style={styles.saveButton}>
+            <Text style={styles.saveButtonText}>Lưu</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
@@ -180,6 +169,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: "bold",
     marginBottom: 20,
+    fontFamily: "bold",
+
     color: "#4B93CD",
     textAlign: "center",
   },
@@ -201,6 +192,8 @@ const styles = StyleSheet.create({
     borderColor: "#4B93CD",
     borderRadius: 8,
     padding: 12,
+    fontFamily: "medium",
+
     fontSize: 16,
     backgroundColor: "white",
     fontFamily: 'regular'
@@ -221,6 +214,13 @@ const styles = StyleSheet.create({
   textArea: {
     height: 120,
     textAlignVertical: "top",
+    fontFamily: "medium",
+  },
+  saveButtonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
   },
   saveButton: {
     backgroundColor: "white",
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     marginTop: 20,
+    width: 200,
     marginBottom: 40,
   },
   saveButtonText: {

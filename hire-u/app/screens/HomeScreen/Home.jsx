@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: "#ffffff",
+    fontFamily: "medium",
   },
   container: {
     flex: 1,
@@ -143,10 +144,13 @@ const styles = StyleSheet.create({
     fontSize: 27,
     color: "#000",
     marginBottom: 8,
+    fontFamily: "medium",
   },
   description: {
     fontFamily: "regular",
     fontSize: 14,
+    fontFamily: "medium",
+
     color: "black",
     marginBottom: 16,
   },
@@ -162,6 +166,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#2196F3",
     fontSize: 16,
+    fontFamily: "medium",
+
     fontWeight: "500",
   },
   Header: {
@@ -176,6 +182,8 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 14,
     color: "#4B93CD",
+    fontFamily: "medium",
+
     marginBottom: 8,
     textAlign: "center",
   },
@@ -184,6 +192,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     color: "#4B93CD",
+    fontFamily: "medium",
+
     textAlign: "center",
   },
   aboutContainer: {
@@ -200,6 +210,8 @@ const styles = StyleSheet.create({
   aboutItemTitle: {
     fontFamily: "medium",
     fontSize: 14,
+    fontFamily: "medium",
+
     fontWeight: "500",
     color: "#000",
     marginBottom: 4,
@@ -208,6 +220,8 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 14,
     color: "#666",
+    fontFamily: "medium",
+
     lineHeight: 20,
   },
   jobItem: {
@@ -222,8 +236,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   jobTitle: {
-    fontFamily: "regular",
     fontSize: 14,
+    fontFamily: "medium",
+
     fontWeight: "500",
     color: "#000",
     marginBottom: 4,
@@ -237,6 +252,8 @@ const styles = StyleSheet.create({
   applicantsText: {
     fontFamily: "regular",
     fontSize: 14,
+    fontFamily: "medium",
+
     color: "#666",
   },
   faqContainer: {
@@ -255,6 +272,7 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 14,
     color: "#000",
+    fontFamily: "medium",
   },
 });
 

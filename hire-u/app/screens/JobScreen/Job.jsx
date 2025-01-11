@@ -310,6 +310,8 @@ const styles = StyleSheet.create({
   companyName: {
     fontSize: 14,
     color: "#232D3A",
+    fontFamily: "medium",
+
     marginTop: 4,
     fontFamily: "regular",
   },
@@ -338,9 +340,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 12,
+    fontFamily: "medium",
   },
   timePosted: {
     color: "#AAA6B9",
+    fontFamily: "medium",
+
     fontSize: 14,
     fontFamily: "regular",
   },

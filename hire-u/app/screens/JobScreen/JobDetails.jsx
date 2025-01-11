@@ -15,7 +15,7 @@ const JobDetails = ({ route }) => {
   const { job } = route.params;
 
   return (
-    <ScrollView style={styles.container}> 
+    <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.headerTopSection}>
           <TouchableOpacity
@@ -132,12 +132,14 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 8,
     textAlign: "center",
+    fontFamily: "medium",
   },
   companyInfo: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 8,
+    fontFamily: "medium",
   },
   companyName: {
     fontSize: 16,
@@ -191,6 +193,8 @@ const styles = StyleSheet.create({
     color: "#4A90E2",
     textAlign: "center",
     marginTop: 10,
+    fontFamily: "medium",
+
     fontSize: 16,
     fontFamily: 'regular'
   },
@@ -208,6 +212,8 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     color: "#150A33",
+    fontFamily: "medium",
+
     lineHeight: 24,
     fontFamily: 'regular'
   },

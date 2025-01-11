@@ -1,15 +1,31 @@
-import React from "react";
-import { View, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Modal,
+} from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
+import { Picker } from "@react-native-picker/picker";
+import Checkbox from "expo-checkbox";
 
 const InterviewCard = ({ interview, professional }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
+  const [selectedTime, setSelectedTime] = useState();
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const navigateToDetail = () => {
     navigation.navigate("InterviewDetailScreen", {
       interview: interview,
       professional: professional,
     });
+  };
+  const handleTermsPress = () => {
+    setModalVisible(false);
+    navigation.navigate("RegistrationRules");
   };
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={navigateToDetail}>
@@ -42,11 +58,104 @@ const InterviewCard = ({ interview, professional }) => {
           <Text style={styles.remainingText}>
             Số lượng còn lại: {interview.conlai}
           </Text>
-          <TouchableOpacity style={styles.registerButton}>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={() => setModalVisible(true)}
+          >
             <Text style={styles.registerText}>Đăng ký</Text>
           </TouchableOpacity>
         </View>
       </View>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)} // Đóng modal khi nhấn nút quay lại
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>
+              Bạn có chắc muốn đăng ký phỏng vấn?
+            </Text>
+            <Text style={styles.registerText}>
+              Chọn ca phỏng vấn bạn muốn đăng ký
+            </Text>
+            <Picker
+              numberOfLines={1}
+              fontSize={13}
+              fontFamily="medium"
+              selectedValue={selectedTime}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedTime(itemValue)
+              }
+            >
+              <Picker.Item label="9:00" value="9:00" />
+              <Picker.Item label="9:30" value="9:30" />
+              <Picker.Item label="10:30" value="10:30" />
+              <Picker.Item label="13:00" value="13:00" />
+              <Picker.Item label="14:30" value="14:30" />
+              <Picker.Item label="16:30" value="16:30" />
+            </Picker>
+
+            <TouchableOpacity
+              style={[
+                styles.registerButton,
+                {
+                  flexDirection: "column",
+                  borderColor: "#9F9999",
+                  marginBottom: 10,
+                },
+              ]}
+            >
+              <Text style={[styles.registerText, { color: "#9F9999" }]}>
+                Tải CV tại đây
+              </Text>
+              <Text style={[styles.registerText, { color: "#9F9999" }]}>
+                (không bắt buộc)
+              </Text>
+            </TouchableOpacity>
+
+            <View style={styles.checkboxContainer}>
+              <Checkbox
+                disabled={false}
+                color="#4B93CD"
+                value={toggleCheckBox}
+                onValueChange={(newValue) => setToggleCheckBox(newValue)}
+              />
+              <Text style={[styles.text, { marginLeft: 15 }]}>
+                Tôi đồng ý với{" "}
+                <Text
+                  style={[styles.text, { color: "#4B93CD" }]}
+                  onPress={handleTermsPress}
+                >
+                  điều khoản và quy định tham gia phỏng vấn
+                </Text>{" "}
+                của HireU
+              </Text>
+            </View>
+            <View style={[styles.namngang, { justifyContent: "flex-end" }]}>
+              <TouchableOpacity
+                style={styles.huy}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={[styles.registerText, { color: "#FF898B" }]}>
+                  Hủy
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.dki}
+                onPress={() => {
+                  alert("Đăng ký phỏng vấn thành công");
+                  setModalVisible(false);
+                }}
+              >
+                <Text style={styles.registerText}>Đăng ký</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </TouchableOpacity>
   );
 };
@@ -108,9 +217,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 15,
-    borderWidth: 1, 
-    borderColor: "#4B93CD", 
-    alignItems: 'center'
+    borderWidth: 1,
+    borderColor: "#4B93CD",
+    alignItems: "center",
   },
   registerText: {
     color: "#4B93CD",
@@ -150,6 +259,80 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     color: "#6D6C6C",
     marginLeft: 5,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Nền mờ
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: "white",
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontSize: 15,
+    fontFamily: "bold",
+    color: "#00B743",
+    marginBottom: 10,
+    borderBottomColor: "#000",
+    borderBottomWidth: 1,
+    paddingBottom: 10,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  registerText: {
+    color: "#4B93CD",
+    fontSize: 14,
+    fontFamily: "semiBold",
+    marginRight: 5,
+  },
+  registerButton: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 15,
+    borderWidth: 1, // Đặt độ dày của đường viền
+    borderColor: "#4B93CD",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    marginBottom: 30, // Màu sắc của đường viền
+  },
+  namngang: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  huy: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 15,
+    borderWidth: 1, // Đặt độ dày của đường viền
+    borderColor: "#FF898B",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    marginRight: 20,
+  },
+  dki: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 15,
+    borderWidth: 1, // Đặt độ dày của đường viền
+    borderColor: "#4B93CD",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+  },
+  text: {
+    fontSize: 13,
+    fontFamily: "regular",
+    color: "#2E2D2D",
   },
 });
 

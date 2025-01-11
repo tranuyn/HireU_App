@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 16,
+    gap: 100,
     borderBottomWidth: 1,
     borderBottomColor: "#eee",
   },
@@ -199,6 +200,8 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: "600",
+    fontFamily: "bold",
+    textAlign: "center",
     color: "#000",
   },
   content: {
@@ -224,6 +227,7 @@ const styles = StyleSheet.create({
   inputText: {
     fontSize: 16,
     color: "#000",
+    fontFamily: "medium",
   },
   dropdownButton: {
     flexDirection: "row",
@@ -238,6 +242,7 @@ const styles = StyleSheet.create({
   dropdownButtonText: {
     fontSize: 16,
     color: "#000",
+    fontFamily: "medium",
   },
   modalOverlay: {
     flex: 1,
@@ -249,6 +254,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     maxHeight: "50%",
+    fontFamily: "medium",
   },
   modalItem: {
     padding: 16,
@@ -262,6 +268,7 @@ const styles = StyleSheet.create({
   selectedItemText: {
     color: "#2196F3",
     fontWeight: "500",
+    fontFamily: "medium",
   },
   button: {
     borderWidth: 1,
@@ -275,6 +282,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#2196F3",
     fontSize: 16,
+    fontFamily: "medium",
+
     fontWeight: "500",
   },
 });
