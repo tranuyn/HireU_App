@@ -104,6 +104,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    fontFamily: "medium",
+
     // padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#F0F0F0",
@@ -129,6 +131,8 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     marginLeft: 8,
+    fontFamily: "medium",
+
     fontSize: 14,
     color: "#333333",
   },
@@ -157,10 +161,13 @@ const styles = StyleSheet.create({
   filterText: {
     color: "#4B93CD",
     fontSize: 14,
+    fontFamily: "medium",
   },
   questionCount: {
     fontSize: 14,
     color: "#666666",
+    fontFamily: "bold",
+
     paddingHorizontal: 16,
     marginBottom: 16,
   },
@@ -178,6 +185,8 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 16,
+    fontFamily: "medium",
+
     fontWeight: "600",
     color: "#333333",
     marginBottom: 8,
@@ -186,6 +195,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666666",
     lineHeight: 20,
+    fontFamily: "medium",
+
     marginBottom: 12,
   },
   seeMoreButton: {
@@ -193,6 +204,8 @@ const styles = StyleSheet.create({
   },
   seeMoreText: {
     color: "#4B93CD",
+    fontFamily: "medium",
+
     fontSize: 14,
     fontWeight: "500",
   },
