@@ -15,7 +15,7 @@ const JobDetails = ({ route }) => {
   const { job } = route.params;
 
   return (
-    <ScrollView style={styles.container}> 
+    <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.headerTopSection}>
           <TouchableOpacity
@@ -132,16 +132,19 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 8,
     textAlign: "center",
+    fontFamily: "medium",
   },
   companyInfo: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 8,
+    fontFamily: "medium",
   },
   companyName: {
     fontSize: 16,
     color: "#333",
+    fontFamily: "bold",
   },
   dot: {
     marginHorizontal: 8,
@@ -151,10 +154,12 @@ const styles = StyleSheet.create({
   location: {
     fontSize: 16,
     color: "#333",
+    fontFamily: "medium",
   },
   timePosted: {
     fontSize: 16,
     color: "#666",
+    fontFamily: "medium",
   },
   section: {
     padding: 16,
@@ -172,6 +177,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#524B6B",
     lineHeight: 24,
+    fontFamily: "medium",
   },
   readMoreButton: {
     marginTop: 12,
@@ -185,6 +191,8 @@ const styles = StyleSheet.create({
     color: "#4A90E2",
     textAlign: "center",
     marginTop: 10,
+    fontFamily: "medium",
+
     fontSize: 16,
   },
   requirementItem: {
@@ -200,6 +208,8 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     color: "#150A33",
+    fontFamily: "medium",
+
     lineHeight: 24,
   },
   applyButton: {
@@ -214,6 +224,8 @@ const styles = StyleSheet.create({
   applyButtonText: {
     color: "#fff",
     fontSize: 16,
+    fontFamily: "medium",
+
     fontWeight: "bold",
   },
 });

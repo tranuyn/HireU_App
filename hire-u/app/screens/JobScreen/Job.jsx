@@ -248,6 +248,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
     fontSize: 16,
+    fontFamily: "medium",
   },
   jobList: {
     padding: 16,
@@ -288,24 +289,29 @@ const styles = StyleSheet.create({
   jobTitle: {
     fontSize: 16,
     fontWeight: "bold",
+    fontFamily: "bold",
   },
   savedButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#4A90E2',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#4A90E2",
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 16,
     gap: 4,
   },
   savedButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: "medium",
+
+    fontWeight: "500",
   },
   companyName: {
     fontSize: 14,
     color: "#232D3A",
+    fontFamily: "medium",
+
     marginTop: 4,
   },
   saveButton: {
@@ -327,20 +333,24 @@ const styles = StyleSheet.create({
   tagText: {
     color: "#4B93CD",
     fontSize: 14,
+    fontFamily: "medium",
   },
   jobFooter: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 12,
+    fontFamily: "medium",
   },
   timePosted: {
     color: "#AAA6B9",
+    fontFamily: "medium",
+
     fontSize: 14,
   },
   salary: {
     color: "#4B93CD",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: "bold",
   },
 });
 
