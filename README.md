@@ -16,7 +16,6 @@
 
  ## <a name="features">Chức năng</a>
 
-- Responsive Design: Đảm bảo trải nghiệm liền mạch trên nhiều thiết bị và kích thước màn hình khác nhau.
 - Modern UI: Giao diện người dùng sáng tạo với bố cục trực quan, tuân theo những xu hướng thiết kế web mới nhất.
 
 ## <a name="technology">Công Nghệ</a>
