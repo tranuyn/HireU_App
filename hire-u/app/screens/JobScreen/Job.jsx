@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
+  StatusBar,
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -140,6 +141,7 @@ const Job = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#1a1b4b" />
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
           <MaterialIcons name="search" size={24} color="#666" />
@@ -176,7 +178,7 @@ const Job = () => {
             style={styles.jobCard}
             onPress={() => handleJobPress(job)}
           >
-            {" "}
+            <Text>{" "}</Text>
             <View style={styles.jobHeader}>
               <View style={styles.hehe}>
                 <View style={styles.logoContainer}>
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: 8,
-    padding: 12,
+    padding: 5,
     marginBottom: 8,
   },
   hehe: {
@@ -248,6 +250,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
     fontSize: 16,
+    fontFamily: "regular",
   },
   jobList: {
     padding: 16,
@@ -278,6 +281,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 24,
+    fontFamily: "regular",
   },
   jobInfo: {
     flex: 1,
@@ -287,26 +291,27 @@ const styles = StyleSheet.create({
   },
   jobTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "bold",
   },
   savedButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#4A90E2',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#4A90E2",
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 16,
     gap: 4,
   },
   savedButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: "regular",
   },
   companyName: {
     fontSize: 14,
     color: "#232D3A",
     marginTop: 4,
+    fontFamily: "regular",
   },
   saveButton: {
     padding: 4,
@@ -327,6 +332,7 @@ const styles = StyleSheet.create({
   tagText: {
     color: "#4B93CD",
     fontSize: 14,
+    fontFamily: "regular",
   },
   jobFooter: {
     flexDirection: "row",
@@ -336,11 +342,12 @@ const styles = StyleSheet.create({
   timePosted: {
     color: "#AAA6B9",
     fontSize: 14,
+    fontFamily: "regular",
   },
   salary: {
     color: "#4B93CD",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: "medium",
   },
 });
 

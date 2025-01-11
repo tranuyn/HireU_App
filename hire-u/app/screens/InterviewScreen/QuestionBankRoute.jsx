@@ -94,7 +94,7 @@ const QuestionBankRoute = () => {
           <MaterialIcons name="search" size={24} color="#AAA6B9" />
           <TextInput
             style={styles.searchInput}
-            placeholder="Tìm kiếm trên HireU"
+            placeholder="Tìm kiếm ngành nghề"
             placeholderTextColor="#AAA6B9"
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#333333",
-    fontFamily: "ASAP",
+    fontFamily: "regular",
     marginBottom: 16,
   },
   categoryGrid: {

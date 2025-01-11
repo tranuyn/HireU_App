@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#000",
     marginBottom: 8,
+    fontFamily: 'regular'
   },
   inputContainer: {
     borderWidth: 1,

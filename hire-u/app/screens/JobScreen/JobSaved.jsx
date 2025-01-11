@@ -22,6 +22,15 @@ const JobsSaved = () => {
       salary: "25 - 30 triệu",
       timePosted: "25 phút trước",
       logo: "G",
+      description:
+        "Chúng tôi đang tìm kiếm một UI/UX Designer có khả năng chuyển đổi ý tưởng sáng tạo thành các thiết kế giao diện người dùng trực quan và dễ sử dụng. Bạn sẽ tham gia vào toàn bộ quy trình thiết kế, từ nghiên cứu người dùng đến xây dựng nguyên mẫu và giao diện cuối cùng.",
+      requirements: [
+        "Tạo ra các thiết kế giao diện người dùng (UI) trực quan, hấp dẫn và dễ sử dụng trên các nền tảng khác nhau (website, ứng dụng di động,...)",
+        "Xây dựng các bản persona và user journey map để định hình trải nghiệm người dùng",
+        "Làm việc chặt chẽ với các thành viên trong đội ngũ (developer, product manager,...) để đảm bảo sản phẩm được phát triển đúng tiến độ và đáp ứng yêu cầu",
+        "Kiểm tra và đảm bảo chất lượng của các thiết kế trước khi bàn giao cho giai đoạn phát triển",
+        "Đảm bảo rằng các dự án được thực hiện đúng tiến độ và trong ngân sách",
+      ],
     },
     {
       id: 2,
@@ -32,7 +41,10 @@ const JobsSaved = () => {
       salary: "20 - 35 triệu",
       timePosted: "3 giờ trước",
       logo: "D",
-    },
+      description:
+        "Tham gia Creative Studio với vai trò Lead Designer để dẫn dắt các dự án thiết kế, định hình nhận diện thương hiệu và phát triển ý tưởng thành các sản phẩm trực quan tuyệt đẹp.",
+        requirements: ["Thông thạo tiếng Anh", "Có kinh nghiệm trên 3 năm"]
+      },
     {
       id: 3,
       title: "UX Researcher",
@@ -42,6 +54,7 @@ const JobsSaved = () => {
       salary: "20 - 35 triệu",
       timePosted: "3 giờ trước",
       logo: "T",
+      requirements: ["Thông thạo tiếng Anh", "Có khả năng làm việc nhóm tốt"]
     },
   ];
 
@@ -122,7 +135,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "bold",
     marginLeft: 16,
   },
   jobList: {
@@ -158,6 +171,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 24,
+    fontFamily: "regular",
   },
   jobInfo: {
     flex: 1,
@@ -166,12 +180,13 @@ const styles = StyleSheet.create({
   },
   jobTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "bold",
   },
   companyName: {
     fontSize: 14,
     color: "#232D3A",
     marginTop: 4,
+    fontFamily: "regular",
   },
   saveButton: {
     padding: 4,
@@ -192,6 +207,7 @@ const styles = StyleSheet.create({
   tagText: {
     color: "#4B93CD",
     fontSize: 14,
+    fontFamily: "regular",
   },
   jobFooter: {
     flexDirection: "row",
@@ -201,11 +217,12 @@ const styles = StyleSheet.create({
   timePosted: {
     color: "#AAA6B9",
     fontSize: 14,
+    fontFamily: "regular",
   },
   salary: {
     color: "#4B93CD",
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: "medium",
   },
 });
 

@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "700",
+    fontFamily: "bold",
     marginBottom: 20,
     color: "#4B93CD",
     textAlign: "center",
@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
     color: "#150B3D",
+    fontFamily: 'regular'
   },
   input: {
     borderWidth: 1,
@@ -202,6 +203,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     backgroundColor: "white",
+    fontFamily: 'regular'
   },
   dateContainer: {
     flexDirection: "row",
@@ -231,7 +233,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: "#4B93CD",
     fontSize: 16,
-    fontWeight: "600",
+    fontFamily: "bold",
     borderColor: "#4B93CD",
   },
 });

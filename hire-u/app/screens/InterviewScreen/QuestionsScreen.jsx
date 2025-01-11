@@ -13,6 +13,7 @@ const QuestionsScreen = ({ route, navigation }) => {
   const { categoryTitle, positionTitle, levelTitle, totalQuestions } =
     route.params;
   const [searchQuery, setSearchQuery] = useState("");
+  const [expandedAnswers, setExpandedAnswers] = useState({});
 
   const questions = [
     {
@@ -40,7 +41,17 @@ const QuestionsScreen = ({ route, navigation }) => {
   const filteredQuestions = questions.filter((item) =>
     item.question.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const toggleAnswer = (id) => {
+    setExpandedAnswers((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
+  const truncateText = (text, limit) => {
+    if (text.length <= limit) return text;
+    return text.slice(0, limit) + "...";
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -56,7 +67,7 @@ const QuestionsScreen = ({ route, navigation }) => {
           <MaterialIcons name="search" size={24} color="#AAA6B9" />
           <TextInput
             style={styles.searchInput}
-            placeholder="Tìm kiếm trên HireU"
+            placeholder="Tìm kiếm câu hỏi"
             placeholderTextColor="#AAA6B9"
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -65,15 +76,21 @@ const QuestionsScreen = ({ route, navigation }) => {
       </View>
 
       <View style={styles.filters}>
-        <View style={styles.filterChip}>
-          <Text style={styles.filterText}>{categoryTitle}</Text>
-        </View>
-        <View style={styles.filterChip}>
-          <Text style={styles.filterText}>{positionTitle}</Text>
-        </View>
-        <View style={styles.filterChip}>
-          <Text style={styles.filterText}>{levelTitle}</Text>
-        </View>
+        {categoryTitle && (
+          <View style={styles.filterChip}>
+            <Text style={styles.filterText}>{categoryTitle}</Text>
+          </View>
+        )}
+        {positionTitle && (
+          <View style={styles.filterChip}>
+            <Text style={styles.filterText}>{positionTitle}</Text>
+          </View>
+        )}
+        {levelTitle && (
+          <View style={styles.filterChip}>
+            <Text style={styles.filterText}>{levelTitle}</Text>
+          </View>
+        )}
       </View>
 
       <Text style={styles.questionCount}>
@@ -85,10 +102,21 @@ const QuestionsScreen = ({ route, navigation }) => {
         {filteredQuestions.map((item) => (
           <View key={item.id} style={styles.questionCard}>
             <Text style={styles.questionText}>Câu hỏi: {item.question}</Text>
-            <Text style={styles.answerText}>{item.answer}</Text>
-            <TouchableOpacity style={styles.seeMoreButton}>
-              <Text style={styles.seeMoreText}>Xem thêm</Text>
-            </TouchableOpacity>
+            <Text style={styles.answerText}>
+              {expandedAnswers[item.id]
+                ? item.answer
+                : truncateText(item.answer, 150)}
+            </Text>
+            {item.answer.length > 150 && (
+              <TouchableOpacity
+                style={styles.seeMoreButton}
+                onPress={() => toggleAnswer(item.id)}
+              >
+                <Text style={styles.seeMoreText}>
+                  {expandedAnswers[item.id] ? "Thu gọn" : "Xem thêm"}
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         ))}
       </ScrollView>
@@ -112,10 +140,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
-    height: 60,
     // marginBottom: 24,
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: 20,
   },
   searchBox: {
     flex: 1,
@@ -123,17 +149,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 15,
+    padding: 8,
   },
   searchInput: {
     flex: 1,
     marginLeft: 8,
     fontSize: 14,
     color: "#333333",
+    fontFamily: "regular",
   },
   totalQuestions: {
     color: "red",
+    fontFamily: "regular",
   },
   filterButton: {
     padding: 8,
@@ -157,12 +184,14 @@ const styles = StyleSheet.create({
   filterText: {
     color: "#4B93CD",
     fontSize: 14,
+    fontFamily: "regular",
   },
   questionCount: {
     fontSize: 14,
     color: "#666666",
     paddingHorizontal: 16,
     marginBottom: 16,
+    fontFamily: "regular",
   },
   questionsContainer: {
     flex: 1,
@@ -178,7 +207,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 16,
-    fontWeight: "600",
+    fontFamily: "medium",
     color: "#333333",
     marginBottom: 8,
   },
@@ -187,6 +216,7 @@ const styles = StyleSheet.create({
     color: "#666666",
     lineHeight: 20,
     marginBottom: 12,
+    fontFamily: "regular",
   },
   seeMoreButton: {
     alignSelf: "flex-end",

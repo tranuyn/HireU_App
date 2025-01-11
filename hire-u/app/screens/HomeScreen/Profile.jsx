@@ -156,13 +156,14 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 22,
-    fontWeight: "bold",
+    fontFamily: "bold",
     color: "#fff",
   },
   location: {
     fontSize: 14,
     color: "#fff",
     marginTop: 4,
+    fontFamily: 'regular'
   },
   statsRow: {
     flexDirection: "row",
@@ -176,12 +177,13 @@ const styles = StyleSheet.create({
   },
   statNumber: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "bold",
     color: "#fff",
   },
   statLabel: {
     fontSize: 12,
     color: "#fff",
+    fontFamily: 'regular'
   },
   editButton: {
     flexDirection: "row",
@@ -195,6 +197,7 @@ const styles = StyleSheet.create({
   editButtonText: {
     color: "#fff",
     marginRight: 4,
+    fontFamily: 'regular'
   },
   editIcon: {
     marginLeft: 4,
@@ -216,6 +219,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 16,
     color: "#4A90E2",
+    fontFamily: 'regular'
   },
 });
 

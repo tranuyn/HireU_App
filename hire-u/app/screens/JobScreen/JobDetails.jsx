@@ -53,15 +53,15 @@ const JobDetails = ({ route }) => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Mô tả công việc</Text>
         <Text style={styles.description}>{job.description}</Text>
-        <TouchableOpacity style={styles.readMoreButton}>
+        {/* <TouchableOpacity style={styles.readMoreButton}>
           <Text style={styles.readMoreText}>Đọc thêm</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       {/* Requirements Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Yêu cầu</Text>
-        {job.requirements.map((requirement, index) => (
+        {job.requirements?.map((requirement, index) => (
           <View key={index} style={styles.requirementItem}>
             <Text style={styles.bulletPoint}>•</Text>
             <Text style={styles.requirementText}>{requirement}</Text>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   jobTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "bold",
     color: "#1a1b4b",
     marginTop: 16,
     marginBottom: 8,
@@ -142,19 +142,23 @@ const styles = StyleSheet.create({
   companyName: {
     fontSize: 16,
     color: "#333",
+    fontFamily: 'regular'
   },
   dot: {
     marginHorizontal: 8,
     color: "black",
     fontSize: 30,
+    fontFamily: 'regular'
   },
   location: {
     fontSize: 16,
     color: "#333",
+    fontFamily: 'regular'
   },
   timePosted: {
     fontSize: 16,
     color: "#666",
+    fontFamily: 'regular'
   },
   section: {
     padding: 16,
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "bold",
     color: "#1a1b4b",
     marginBottom: 12,
   },
@@ -172,6 +176,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#524B6B",
     lineHeight: 24,
+    fontFamily: 'regular'
   },
   readMoreButton: {
     marginTop: 12,
@@ -180,12 +185,14 @@ const styles = StyleSheet.create({
     width: 90,
     height: 40,
     borderRadius: 9,
+    fontFamily: 'regular'
   },
   readMoreText: {
     color: "#4A90E2",
     textAlign: "center",
     marginTop: 10,
     fontSize: 16,
+    fontFamily: 'regular'
   },
   requirementItem: {
     flexDirection: "row",
@@ -195,12 +202,14 @@ const styles = StyleSheet.create({
     marginRight: 8,
     color: "#666",
     fontSize: 16,
+    fontFamily: 'regular'
   },
   requirementText: {
     flex: 1,
     fontSize: 16,
     color: "#150A33",
     lineHeight: 24,
+    fontFamily: 'regular'
   },
   applyButton: {
     backgroundColor: "#4B93CD",
@@ -214,7 +223,7 @@ const styles = StyleSheet.create({
   applyButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "bold",
   },
 });
 

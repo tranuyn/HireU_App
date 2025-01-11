@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -25,22 +26,25 @@ const Home = () => {
 
   return (
     <View style={styles.mainContainer}>
+      <StatusBar barStyle="dark-content" backgroundColor="#D3EEFF" />
       <View style={styles.Header}>
         <Text style={styles.title}>HireU</Text>
-        <Text style={styles.description}>This is my app description.</Text>
+        <Text style={styles.description}>
+          Xóa tan nỗi lo thất nghiệp của bạn
+        </Text>
 
         <TouchableOpacity
           style={styles.joinButton}
           onPress={() => navigation.navigate("Profile")}
         >
-          <Text style={styles.buttonText}>Build My Profile</Text>
+          <Text style={styles.buttonText}>Tạo hồ sơ cá nhân của tôi</Text>
         </TouchableOpacity>
       </View>
 
       <ScrollView style={styles.container}>
         <View style={styles.sectionContainer}>
           {/* <Text style={styles.sectionLabel}>Introduction</Text> */}
-          <Text style={styles.sectionTitle}>About us</Text>
+          <Text style={styles.sectionTitle}>Về chúng tôi</Text>
         </View>
 
         <View style={styles.aboutContainer}>
@@ -79,7 +83,7 @@ const Home = () => {
         </View>
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Trending jobs</Text>
+          <Text style={styles.sectionTitle}>Công việc đang hot</Text>
         </View>
 
         {renderJobItem(
@@ -99,7 +103,7 @@ const Home = () => {
         )}
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Frequently asked questions</Text>
+          <Text style={styles.sectionTitle}>Những câu hỏi tiêu biểu</Text>
         </View>
 
         <View style={styles.faqContainer}>
@@ -135,14 +139,13 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    fontFamily: "Asap",
+    fontFamily: "bold",
     fontSize: 27,
-    fontWeight: "bold",
     color: "#000",
     marginBottom: 8,
   },
   description: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "black",
     marginBottom: 16,
@@ -170,14 +173,14 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
   },
   sectionLabel: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "#4B93CD",
     marginBottom: 8,
     textAlign: "center",
   },
   sectionTitle: {
-    fontFamily: "Asap",
+    fontFamily: "medium",
     fontSize: 20,
     fontWeight: "600",
     color: "#4B93CD",
@@ -195,14 +198,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   aboutItemTitle: {
-    fontFamily: "Asap",
+    fontFamily: "medium",
     fontSize: 14,
     fontWeight: "500",
     color: "#000",
     marginBottom: 4,
   },
   aboutItemDescription: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "#666",
     lineHeight: 20,
@@ -219,25 +222,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   jobTitle: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     fontWeight: "500",
     color: "#000",
     marginBottom: 4,
   },
   jobDescription: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "#666",
     marginBottom: 4,
   },
   applicantsText: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "#666",
   },
   faqContainer: {
     gap: 12,
+    marginBottom: 30,
   },
   faqItem: {
     flexDirection: "row",
@@ -248,7 +252,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#E5E5E5",
   },
   faqText: {
-    fontFamily: "Asap",
+    fontFamily: "regular",
     fontSize: 14,
     color: "#000",
   },
