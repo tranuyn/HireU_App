@@ -1,18 +1,14 @@
 import * as React from "react";
 import { View, Text, useWindowDimensions, StyleSheet } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import QuestionBankRoute from "./QuestionBankRoute";
 
 import Recommendation from "./RecommendationScreen/RecommendtionScreen";
 import CalendarScreen from "./CalendarScreen/CalendarScreen";
 
 // Component cho các tab
 const RecommendationRoute = () => <Recommendation />;
-
-const QuestionBankRoute = () => (
-  <View style={styles.scene}>
-    <Text>Ngân hàng câu hỏi</Text>
-  </View>
-);
+ 
 const AlbumsRoute = () => <CalendarScreen />;
 
 const renderScene = SceneMap({
